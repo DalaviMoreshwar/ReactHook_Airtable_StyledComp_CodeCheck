@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
-import "./styles.css";
 import Airtable from "airtable";
 import Goal from "./components/Goal";
+
+import styled from "styled-components";
+import { GlobalStyle } from "./styles/Global.style";
 
 const base = new Airtable({ apiKey: "key75QzAyUyTPExoZ" }).base(
   "appjz5RfvPbhXwin5"
 );
+
+const StyledH1 = styled.h1`
+  text-align: center;
+  font-size: 4rem;
+  margin: 1rem 0;
+`;
 
 export default function App() {
   const [goals, setGoals] = useState([]);
@@ -28,7 +36,8 @@ export default function App() {
   }, []);
   return (
     <div className="App">
-      <h1>My Goals</h1>
+      <GlobalStyle />
+      <StyledH1>My Goals</StyledH1>
       {goals.map((goal) => (
         <Goal
           key={goal.id}
